@@ -2,7 +2,7 @@
 //assigning grades to a student.
 // using nested if-else.
 //all marks are between 0 and 100.
-function Generator(scores) {
+function calculateGrades(scores) {
     if (scores >= 80) {
         grade = 'A'
     }
