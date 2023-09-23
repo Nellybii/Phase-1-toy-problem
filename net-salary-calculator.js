@@ -5,9 +5,9 @@ const nssfDeductionate = 0.06;
 function calculateGrossSalary(basicSalary, benefits) {
     return basicSalary + benefits;
 }
-calculateGrossSalary();
+grossSalary = calculateGrossSalary(basicSalary,benefits);
 
-function calculatePayeTaxrate(payeTaxRate) {
+function calculatePayeTaxrate(gl) {
     if (grossSalary <= 24000) {
         return 0.1;
     } else if (grossSalary <= 32333) {
@@ -22,8 +22,8 @@ function calculatePayeTaxrate(payeTaxRate) {
         return 0.35;
     }
 }
-calculatePayeTaxrate();
-const calculatePayeTax = grossSalary * calculatePayeTaxrate
+payeTaxRate = calculatePayeTaxrate(grossSalary);
+const payeTax = grossSalary * payeTaxRate
 
 function calculateNhifDeductions(grossSalary) {
     if (grossSalary <= 5999) {
@@ -63,16 +63,17 @@ function calculateNhifDeductions(grossSalary) {
     }
     
 }
-calculateNhifDeductions();
+nhifDeductions = calculateNhifDeductions(grossSalary);
 
 function calculateNssfDeductions(grossSalary) {
     const nssfContribution = grossSalary * nssfDeduction;
     return nssfContribution;
 }
-calculateNssfDeductions();
-function calculateNetSalary(basicSalary, benefits) {
-    const deductions = payeTax + nhifDeductions + nssfDeductions;
+nssfDeductions = calculateNssfDeductions(grossSalary);
+function calculateNetSalary(grossSalary, nssfDeduction, nhifDeductions, payeTax) {
+    const deductions = payeTax + nhifDeductions + nssfDeduction;
     const netSalary = grossSalary - deductions;
     return netSalary;
 }
-calculateNetSalary();
+netSalary = calculateNetSalary(grossSalary, nssfDeductionate, nhifDeductions, payeTax);
+return  grossSalary- (nssfDeductionate + nhifDeductions + payeTax);
